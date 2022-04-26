@@ -1,0 +1,50 @@
+<div class="container">
+  <ul class="list">
+    <li *ngFor="let usuario of usuarios" class="item">
+      <img
+        [src]="
+          usuario.avatar || 'assets/images/avatar/default_profile_picture.png'
+        "
+        class="avatar"
+      />
+      <ul class="item-1">
+        <li>
+          <span [ngClass]="'center-id'">{{ usuario.id }}</span>
+          {{ usuario.nome }}
+        </li>
+        <li class="mat-caption">
+          <mat-icon *ngIf="usuario.email">mail</mat-icon>
+          {{ usuario.email }}
+        </li>
+        <li class="mat-caption">
+          <mat-icon *ngIf="usuario.github">mail</mat-icon>
+          {{ usuario.github }}
+        </li>
+        <li class="mat-caption">
+          <mat-icon *ngIf="usuario.linkedin">mail</mat-icon>
+          {{ usuario.linkedin }}
+        </li>
+        <li class="mat-caption" [ngStyle]="{ color: '#0000008a' }">
+          adicionado em {{ usuario.timeStamp | date: "dd/MM/yyyy HH:mm" }}
+        </li>
+      </ul>
+
+      <button
+        [routerLink]="['/usuarios/edit', usuario.id]"
+        class="item-2"
+        mat-raised-button
+        color="primary"
+      >
+        Editar
+      </button>
+      <button
+        (click)="excluir(usuario)"
+        class="item-3"
+        mat-raised-button
+        color="warn"
+      >
+        Excluir
+      </button>
+    </li>
+  </ul>
+</div>

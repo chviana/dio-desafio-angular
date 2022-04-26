@@ -1,0 +1,72 @@
+<div class="container">
+  <h2 *ngIf="isNew; else elseBlock">Novo usuário</h2>
+  <ng-template #elseBlock>
+    <h2>Alterando usuário</h2>
+  </ng-template>
+  <form #form="ngForm">
+    <mat-form-field appearance="outline" class="field">
+      <mat-label>Nome</mat-label>
+      <input
+        [ngModel]="usuario.nome"
+        name="nome"
+        #usuarioNome="ngModel"
+        matInput
+        placeholder="digite o nome"
+        required
+        [ngClass]="{ 'is-invalid': usuarioNome.invalid }"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="field">
+      <mat-label>Email</mat-label>
+      <input
+        [ngModel]="usuario.email"
+        name="email"
+        #usuarioEmail="ngModel"
+        matInput
+        placeholder="digite o email"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="field">
+      <mat-label>GitHub</mat-label>
+      <input
+        [ngModel]="usuario.github"
+        name="github"
+        #usuarioGithub="ngModel"
+        matInput
+        placeholder="digite o gitHub"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="field">
+      <mat-label>LinkedIn</mat-label>
+      <input
+        [ngModel]="usuario.linkedin"
+        name="linkedin"
+        #usuarioLinkedin="ngModel"
+        matInput
+        placeholder="digite o linkedIn"
+      />
+    </mat-form-field>
+
+    <button
+      type="button"
+      (click)="salvar(form)"
+      mat-raised-button
+      color="primary"
+      [disabled]="form.invalid"
+    >
+      Salvar
+    </button>
+
+    <button
+      (click)="cancelar()"
+      [ngStyle]="{ marginLeft: '10px' }"
+      type="button"
+      mat-raised-button
+    >
+      Cancelar
+    </button>
+  </form>
+</div>
